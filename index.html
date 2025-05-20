@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osobní komunikace s Davidem</title>
+</head>
+<body>
+    <h1>Osobní komunikace s Davidem</h1>
+    <form id="questionForm">
+        <label for="question">Napiš otázku:</label><br>
+        <input type="text" id="question" name="question" required><br><br>
+        <button type="submit">Odeslat</button>
+    </form>
+
+    <h2>Odpověď:</h2>
+    <p id="answer">Zatím nic...</p>
+
+    <script>
+        document.getElementById("questionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const question = document.getElementById("question").value;
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');  // Tvoje jméno
+            const relationship = urlParams.get('relationship');  // Vztah k tobě
+
+            fetch('https://tvujbackend.glitch.me/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    relationship: relationship,
+                    question: question
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("answer").textContent = data.answer;
+            });
+        });
+    </script>
+</body>
+</html>
