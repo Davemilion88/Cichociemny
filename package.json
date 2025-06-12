@@ -1,0 +1,17 @@
+{
+  "name": "cichociemny",
+  "version": "1.0.0",
+  "description": "Nejlepší přítel Milionka",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^29.6.0",
+    "jsdom": "^22.0.0"
+  }
+}
