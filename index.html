@@ -39,6 +39,9 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("answer").textContent = data.answer;
+            })
+            .catch(() => {
+                document.getElementById("answer").textContent = "Chyba komunikace";
             });
         });
     </script>
