@@ -36,9 +36,17 @@
                     question: question
                 })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server error');
+                }
+                return response.json();
+            })
             .then(data => {
                 document.getElementById("answer").textContent = data.answer;
+            })
+            .catch(() => {
+                document.getElementById("answer").textContent = 'Chyba při komunikaci se serverem.';
             });
         });
     </script>
