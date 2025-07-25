@@ -19,7 +19,7 @@
     <script>
         document.getElementById("questionForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            
+
             const question = document.getElementById("question").value;
             const urlParams = new URLSearchParams(window.location.search);
             const name = urlParams.get('name');  // Tvoje jméno
